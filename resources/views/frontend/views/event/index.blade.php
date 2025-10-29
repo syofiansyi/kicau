@@ -1,4 +1,4 @@
-@extends('Frontend.includes.index')
+@extends('frontend.includes.index')
 
 
 @section('title')
