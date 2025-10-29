@@ -1,4 +1,4 @@
-@extends('Frontend.includes.index')
+@extends('frontend.includes.index')
 @section('title')
     Kopdar LovedBird Indonesia - Berita
 @endsection
@@ -33,9 +33,9 @@
                 @endif
             });
     </script>
-    @include('Frontend.views.artikel_berita.components.hero_slide')
+    @include('frontend.views.artikel_berita.components.hero_slide')
     {{--Event--}}
-    @include('Frontend.views.artikel_berita.components.news_berita')
+    @include('frontend.views.artikel_berita.components.news_berita')
 
     @push('addon-script')
 {{--        <script src="{{ asset('Frontend/js/event.js') }}"></script>--}}

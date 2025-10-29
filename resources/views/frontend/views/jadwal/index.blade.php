@@ -1,4 +1,4 @@
-@extends('Frontend.includes.index')
+@extends('frontend.includes.index')
 
 
 @section('title')
@@ -43,5 +43,5 @@
             });
     </script>
    
-    @include('Frontend.views.jadwal.components.jadwal')
+    @include('frontend.views.jadwal.components.jadwal')
 @endsection
