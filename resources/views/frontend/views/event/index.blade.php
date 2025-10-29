@@ -32,5 +32,5 @@
                 @endif
             });
     </script>
-    @include('Frontend.views.event.components.event')
+    @include('frontend.views.event.components.event')
 @endsection
