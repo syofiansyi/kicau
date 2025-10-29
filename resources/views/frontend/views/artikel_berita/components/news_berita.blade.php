@@ -1,5 +1,20 @@
 <div class=" mt-4">
     <h3 class="fw-bold">Lates News</h3>
+    <div class="d-flex justify-content-center mb-4">
+    <form method="GET" action="{{ route('artikel_berita') }}" style="width: 60%;">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari berita..."
+                value="{{ request('search') }}"
+                aria-label="Cari berita"
+            />
+            <button class="btn btn-primary" type="submit">Cari</button>
+        </div>
+    </form>
+</div>
     <div class="row">
         @foreach ($news as $berita)
         <div class="col-md-6 col-lg-3 mb-4">

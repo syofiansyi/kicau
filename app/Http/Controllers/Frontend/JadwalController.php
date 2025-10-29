@@ -10,16 +10,31 @@ use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
-    public function index()
-    {
+     public function index(Request $request)
+{
+    try {
+        $search = $request->input('search');
 
-        $jadwals = Jadwal::where('status',0)->latest()->paginate(20, ['*'], 'jadwals_page');
-        // echo ($arts) ;
-        // exit;
+        $jadwals = Jadwal::where('status', 0)
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'LIKE', "%{$search}%")
+                      ->orWhere('tanggal_mulai', 'LIKE', "%{$search}%")
+                      ->orWhere('tanggal_selesai', 'LIKE', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(20, ['*'], 'jadwals_page');
 
+        if ($jadwals->isEmpty()) {
+            return redirect()->back()->with('error', 'Tidak ada data pertandingan ditemukan.');
+        }
 
-        return view('frontend.views.jadwal.index', compact( 'jadwals',));
+        return view('frontend.views.jadwal.index', compact('jadwals', 'search'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Terjadi kesalahan saat memuat data pertandingan: ' . $e->getMessage());
     }
+}
     public function group($id)
     {
         $jadwal = Jadwal::findOrFail($id);

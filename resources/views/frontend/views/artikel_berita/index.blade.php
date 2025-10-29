@@ -1,4 +1,4 @@
-@extends('frontend.includes.index')
+@extends('Frontend.includes.index')
 @section('title')
     Kopdar LovedBird Indonesia - Berita
 @endsection
@@ -9,9 +9,33 @@
 
 @section('main')
     {{--Hero Slider--}}
-    @include('frontend.views.artikel_berita.components.hero_slide')
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                @if (session('error'))
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '{{ session('error') }}',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Tutup'
+                    });
+                @endif
+
+                @if (session('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: '{{ session('success') }}',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    });
+                @endif
+            });
+    </script>
+    @include('Frontend.views.artikel_berita.components.hero_slide')
     {{--Event--}}
-    @include('frontend.views.artikel_berita.components.news_berita')
+    @include('Frontend.views.artikel_berita.components.news_berita')
 
     @push('addon-script')
 {{--        <script src="{{ asset('Frontend/js/event.js') }}"></script>--}}

@@ -12,16 +12,38 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function index()
-    {
+    public function index(Request $request)
+{
+    try {
+        $search = $request->input('search');
 
-        $news = News::where('status', 0)->where('category', 0)->latest()->paginate(20);     // News biasa
-        $Hotnews = News::where('status', 0)->where('category', 1)->latest()->get();  // Hot News
-        // echo ($arts) ;
-        // exit;
+        $news = News::where('status', 0)
+            ->where('category', 0)
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'LIKE', "%{$search}%")
+                      ->orWhere('tanggal', 'LIKE', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(20);
 
-        return view('frontend.views.artikel_berita.index', compact( 'news','Hotnews'));
+        $Hotnews = News::where('status', 0)
+            ->where('category', 1)
+            ->latest()
+            ->get();
+
+        // kalau tidak ada data sama sekali
+        if ($news->isEmpty() && $Hotnews->isEmpty()) {
+            return redirect()->back()->with('error', 'Tidak ada data berita ditemukan.');
+        }
+
+        return view('frontend.views.artikel_berita.index', compact('news', 'Hotnews', 'search'));
+    } catch (\Exception $e) {
+        // kalau query error, atau ada error lainnya
+        return redirect()->back()->with('error', 'Terjadi kesalahan saat memuat berita: ' . $e->getMessage());
     }
+}
 
     public function DetailBerita($id,$slug){
 

@@ -3,11 +3,28 @@
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <div class="app-container container-fluid">
             <!--Event-->
+           
             <div ref="eventContainer"
                  class="event-carousel transition-all duration-1000 ease-in-out"
                  :class="{ 'animate-fade-in': isVisible }">
                 <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Event Agenda</h3>
                 <h1 class="text-center text-2xl font-bold">Schedule</h1>
+                 <div class=" mt-4">
+    <div class="d-flex justify-content-center mb-4">
+    <form method="GET" action="{{ route('event-all') }}" style="width: 60%;">
+        <div class="input-group">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari Event..."
+                value="{{ request('search') }}"
+                aria-label="Cari Event"
+            />
+            <button class="btn btn-primary" type="submit">Cari</button>
+        </div>
+    </form>
+</div>
                 <div class="row">
                     @foreach ($events as $event)
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
