@@ -1,0 +1,30 @@
+.header{
+    background-color: #0a0a0a !important;
+    color: white;
+}
+.menu-state-title-primary .menu-item .menu-link.active {
+    transition: color .2s ease, background-color .2s ease;
+    color: white !important;
+}
+
+.menu-state-bg .menu-item .menu-link.active {
+    transition: color .2s ease, background-color .2s ease;
+    background-color: rgba(37, 37, 37, 0.8) !important;
+}
+.menu-state-title-primary .menu-item .menu-link.active .menu-title {
+    color: #ffffff;
+}
+
+
+.menu-state-bg:hover .menu-item:hover .menu-link:hover{
+    transition: color .2s ease, background-color .2s ease;
+    background-color: rgba(37, 37, 37, 0.8) !important;
+    color: #ffffff;
+}
+
+.menu-state-title-primary:hover .menu-item .menu-link:hover .menu-title:hover {
+    color: #ffffff;
+}
+.menu-link:hover .menu-title{
+    color: white !important;
+}

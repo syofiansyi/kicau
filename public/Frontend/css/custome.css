@@ -1,0 +1,219 @@
+.featured-post {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.featured-overlay {
+    position: absolute;
+    top: 0;
+    left: 30px ;
+    height: 100%;
+    /*width: 50%;*/
+    padding: 20px;
+    color: #fff;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.carousel-item p{
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 80px !important;
+}
+.carousel-item .featured-title{
+    font-size: 48px !important;
+}
+.featured-overlay .badge {
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.featured-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white !important;
+}
+.bh-text-black\/20 {
+    color: #ffffff !important;
+}
+.text-justify {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: justify;
+    line-height: 1.5;
+}
+.bh-table-responsive table tfoot tr th, .bh-table-responsive table thead tr th {
+    vertical-align: center !important;
+    font-weight: 700;
+}
+
+/* Media Queries untuk layar kecil */
+@media screen and (max-width: 768px) {
+    .carousel-item p{
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 80px !important;
+    }
+    .carousel-item .featured-title{
+        font-size: 20px !important;
+    }
+    .featured-post img {
+        width: 100%;
+        height: auto;
+    }
+
+    .featured-overlay {
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .featured-title {
+        font-size: 16px;
+    }
+
+    .text-justify {
+        font-size: 13px;
+    }
+}
+
+/*Loved biard Agenda*/
+.event-carousel {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.event-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.event-image {
+    width: 100%;
+    max-width: 350px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+    .image-container {
+        height: auto;
+    }
+
+    .event-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.event-info {
+    padding: 10px;
+    text-align: left;
+}
+
+.location, .date {
+    color: #2c2c2c;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.detail-button {
+    background: #2c2c2c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.swiper{
+    /*padding: 10px !important;*/
+}
+
+/*Top Rank */
+
+
+.even-row {
+    background-color: rgba(240, 240, 240, 0.5); /* Warna abu transparan 50% */
+}
+.result-container {
+    max-height: 400px;
+    position: relative;
+}
+
+.result-list {
+    max-height: 350px; /* Sesuaikan agar tetap dalam batas container */
+    overflow-y: auto;
+    padding-right: 5px; /* Hindari overlap scrollbar */
+}
+
+/* Warna untuk baris genap */
+.even-result {
+    background-color: rgba(240, 240, 240, 0.5); /* Warna abu-abu transparan 50% */
+}
+
+.editor table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.editor td,
+.editor th {
+    border: 1px solid #999;
+    padding: 8px;
+    min-width: 50px;
+}
+.editor td:focus {
+    outline: 2px solid #007bff;
+}
+.event-card:hover{
+    transform: scale(1.03);
+}
+.event-card {
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+/* Tambahkan ini ke file CSS-mu atau dalam <style> tag */
+figure.table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc; /* border luar tabel */
+}
+
+figure.table table td,
+figure.table table th {
+    border: 1px solid #ccc;  /* border antar sel */
+    padding: 8px;
+    text-align: center;
+}
+
+figure.table {
+    margin: 1rem 0;
+}
+figure.table table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
