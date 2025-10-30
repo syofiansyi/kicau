@@ -9,7 +9,7 @@
                  :class="{ 'animate-fade-in': isVisible }">
                   <div class=" mt-4">
     <div class="d-flex justify-content-center mb-4">
-    <form method="GET" action="{{ route('event-all') }}" style="width: 60%;">
+    <form method="GET" action="{{ route('event-all') }}" style="width: 100%;">
         <div class="input-group">
             <input
                 type="text"

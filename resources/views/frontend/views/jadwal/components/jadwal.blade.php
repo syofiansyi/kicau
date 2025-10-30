@@ -6,7 +6,7 @@
             <div class="event-carousel transition-all duration-1000 ease-in-out">
                  <div class=" mt-4">
     <div class="d-flex justify-content-center mb-4">
-    <form method="GET" action="{{ route('pertandingan') }}" style="width: 60%;">
+    <form method="GET" action="{{ route('pertandingan') }}" style="width: 100%;">
         <div class="input-group">
             <input
                 type="text"
