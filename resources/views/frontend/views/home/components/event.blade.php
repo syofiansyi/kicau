@@ -1,6 +1,6 @@
 <div class="event-section relative bg-gray-100 p-6">
   
-<div class="d-flex justify-content-center mb-4">
+<div class="d-flex justify-content-center ">
   <form method="GET" action="{{ route('home') }}" style="width: 100%;">
     <div
       class="input-group d-flex"

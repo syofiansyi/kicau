@@ -7,29 +7,45 @@
             <div ref="eventContainer"
                  class="event-carousel transition-all duration-1000 ease-in-out"
                  :class="{ 'animate-fade-in': isVisible }">
-                <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Event Agenda</h3>
-                <h1 class="text-center text-2xl font-bold">Schedule</h1>
-                <div class="d-flex justify-content-center mb-4">
+                   <div class="d-flex justify-content-center mb-4">
     <form method="GET" action="{{ route('event-all') }}" style="width: 100%;">
-      <div class="input-group" style="border-radius: 25px; overflow: hidden; border: 1px solid #ddd;">
-        <span
-          class="input-group-text bg-white"
-          style="border-right: none; padding-left: 1.5rem; padding-right: 0rem; border-top-left-radius: 25px; border-bottom-left-radius: 25px;"
-        >
-          <i class="fa fa-search"></i>
-        </span>
+     <div class="input-group" style="border-radius: 25px">
+         <span
+        class="bg-white"
+        style="
+          border-right: none;
+          padding-left: 1.5rem;
+          padding-right: 0;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        "
+      >
+        <i class="fa fa-search"></i>
+      </span>
         <input
           type="text"
           name="search"
-          class="form-control shadow-gray-100"
+          class="form-control "
           placeholder="Cari di Kopdar Loverbird Indonesia ....."
           value="{{ request('search') }}"
           aria-label="Cari Pertandingan"
-          style="border-left: none; border-top-right-radius: 25px; border-bottom-right-radius: 25px;"
-        />
+style="
+          border: none;
+          border-radius: 0;
+          border-top-right-radius: 25px;
+          border-bottom-right-radius: 25px;
+        "
+      />      
       </div>
     </form>
   </div>
+                <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Event Agenda</h3>
+                <h1 class="text-center text-2xl font-bold">Schedule</h1>
+              
                 <div class="row">
                     @foreach ($events as $event)
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
