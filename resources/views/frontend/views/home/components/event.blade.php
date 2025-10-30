@@ -2,37 +2,42 @@
   
 <div class="d-flex justify-content-center mb-4">
   <form method="GET" action="{{ route('home') }}" style="width: 100%;">
-    <div class="input-group d-flex" style="width: 100%;">
+    <div
+      class="input-group d-flex"
+      style="
+        width: 100%;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+      "
+    >
       <span
-        role="button"
-        tabindex="0"
-        onclick="this.closest('form').submit()"
-        onkeypress="if(event.key==='Enter') this.click()"
-        class="form-control bg-white"
+        class="input-group-text bg-white"
         style="
-          border: none;
-          border-right: 1px solid #ddd;
-          flex-grow: 1;
-          flex-basis: 0;
-          min-width: 0;
-          border-radius: 0;
+          border-right: none;
+          padding-left: 1.5rem;
+          padding-right: 0;
           border-top-left-radius: 25px;
           border-bottom-left-radius: 25px;
-          max-width: 10px;
-          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
         "
-        aria-label="Search Submit Button"
       >
         <i class="fa fa-search"></i>
       </span>
 
       <input
-        type="text"
+        type="search"
         name="search"
         class="form-control"
         placeholder="Cari di Kopdar Loverbird Indonesia ....."
         value="{{ request('search') }}"
         aria-label="Cari Pertandingan"
+        enterkeyhint="search"
         style="
           border: none;
           border-right: 1px solid #ddd;
@@ -64,9 +69,6 @@
         <option value="jadwals" {{ request('filter') == 'jadwals' ? 'selected' : '' }}>Jadwal</option>
       </select>
     </div>
-
-    <!-- Hidden submit button for mobile compatibility -->
-    <button type="submit" hidden></button>
   </form>
 </div>
 
