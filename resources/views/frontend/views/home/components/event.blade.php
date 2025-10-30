@@ -1,27 +1,61 @@
 <div class="event-section relative bg-gray-100 p-6">
   
- <div class="d-flex justify-content-center mb-4">
+<div class="d-flex justify-content-center mb-4">
   <form method="GET" action="{{ route('home') }}" style="width: 100%;">
-    <div class="input-group" style="border-radius: 25px; overflow: hidden; border: 1px solid #ddd;">
+    <div
+      class="input-group d-flex"
+      style="
+        width: 100%;
+      "
+    >
       <span
-        class="input-group-text bg-white"
-        style="border-right: none; padding-left: 1.5rem; padding-right: 0rem; border-top-left-radius: 25px; border-bottom-left-radius: 25px;"
+        class="form-control bg-white"
+        style="
+        border: none;
+          border-right: 1px solid #ddd;
+          flex-grow: 1;
+          flex-basis: 0;
+          min-width: 0;
+          border-radius: 0;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+          max-width: 10px;
+        "
       >
         <i class="fa fa-search"></i>
       </span>
+
       <input
         type="text"
         name="search"
-        class="form-control shadow-gray-100"
+        class="form-control"
         placeholder="Cari di Kopdar Loverbird Indonesia ....."
         value="{{ request('search') }}"
         aria-label="Cari Pertandingan"
-        style="border-left: none; border-top-right-radius: 0; border-bottom-right-radius: 0;"
+        style="
+          border: none;
+          border-right: 1px solid #ddd;
+          flex-grow: 1;
+          flex-basis: 0;
+          min-width: 0;
+          padding: 0.5rem 1rem;
+          border-radius: 0;
+        "
       />
+
       <select
         name="filter"
-            class="border border-gray-300 rounded-lg p-2 w-full md:w-1/3 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        style="border-left: none; border-top-right-radius: 25px; border-bottom-right-radius: 25px;"
+        class="form-select"
+        style="
+          border: none;
+          border-left: none;
+          border-top-right-radius: 25px;
+          border-bottom-right-radius: 25px;
+          flex-shrink: 0;
+          flex-basis: 120px;
+          max-width: 120px;
+          min-width: 120px;
+        "
       >
         <option value="all" {{ request('filter') == 'all' ? 'selected' : '' }}>Semua</option>
         <option value="news" {{ request('filter') == 'news' ? 'selected' : '' }}>Berita</option>
@@ -31,6 +65,8 @@
     </div>
   </form>
 </div>
+
+
 
     <h3 class="text-center text-lg font-semibold text-gray-500">Lovebird Event Agenda</h3>
     <h1 class="text-center text-2xl font-bold mb-6">Schedule</h1>
