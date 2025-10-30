@@ -2,16 +2,15 @@
   
 <div class="d-flex justify-content-center mb-4">
   <form method="GET" action="{{ route('home') }}" style="width: 100%;">
-    <div
-      class="input-group d-flex"
-      style="
-        width: 100%;
-      "
-    >
+    <div class="input-group d-flex" style="width: 100%;">
       <span
+        role="button"
+        tabindex="0"
+        onclick="this.closest('form').submit()"
+        onkeypress="if(event.key==='Enter') this.click()"
         class="form-control bg-white"
         style="
-        border: none;
+          border: none;
           border-right: 1px solid #ddd;
           flex-grow: 1;
           flex-basis: 0;
@@ -20,7 +19,9 @@
           border-top-left-radius: 25px;
           border-bottom-left-radius: 25px;
           max-width: 10px;
+          cursor: pointer;
         "
+        aria-label="Search Submit Button"
       >
         <i class="fa fa-search"></i>
       </span>
@@ -63,6 +64,9 @@
         <option value="jadwals" {{ request('filter') == 'jadwals' ? 'selected' : '' }}>Jadwal</option>
       </select>
     </div>
+
+    <!-- Hidden submit button for mobile compatibility -->
+    <button type="submit" hidden></button>
   </form>
 </div>
 
