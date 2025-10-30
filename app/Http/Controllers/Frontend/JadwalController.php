@@ -41,7 +41,7 @@ class JadwalController extends Controller
 
         // Jika memang sedang mencari dan total hasil 0 → redirect ke halaman "pertandingan"
         if ($isSearching && $jadwals->total() === 0) {
-            return redirect()->route('pertandingan')->with('error', 'Tidak ada data pertandingan ditemukan.');
+            return redirect()->route('pertandingan')->with('error', 'Data yang dicari tidak ditemukan.');
         }
 
         return view('frontend.views.jadwal.index', compact('jadwals', 'search'));

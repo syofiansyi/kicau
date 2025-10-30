@@ -5,25 +5,29 @@
             <!--Event-->
             <div class="event-carousel transition-all duration-1000 ease-in-out">
                  <div class=" mt-4">
-    <div class="d-flex justify-content-center mb-4">
+  <div class="d-flex justify-content-center mb-4">
     <form method="GET" action="{{ route('pertandingan') }}" style="width: 100%;">
-    <div class="input-group ">
-  <span
-    class="input-group-text bg-white"
-    style="border-right: none; padding-left: 1.5rem; padding-right: 0rem;"
-  >
-    <i class="fa fa-search"></i>
-  </span>
-  <input
-    type="text"
-    name="search"
-    class="form-control shadow-gray-100"
-    placeholder="Cari di Kopdar Loverbird Indonesia ....."
-    value="{{ request('search') }}"
-    aria-label="Cari Pertandingan"
-    style="border-left: none;"
-  />
+      <div class="input-group" style="border-radius: 25px; overflow: hidden; border: 1px solid #ddd;">
+        <span
+          class="input-group-text bg-white"
+          style="border-right: none; padding-left: 1.5rem; padding-right: 0rem; border-top-left-radius: 25px; border-bottom-left-radius: 25px;"
+        >
+          <i class="fa fa-search"></i>
+        </span>
+        <input
+          type="text"
+          name="search"
+          class="form-control shadow-gray-100"
+          placeholder="Cari di Kopdar Loverbird Indonesia ....."
+          value="{{ request('search') }}"
+          aria-label="Cari Pertandingan"
+          style="border-left: none; border-top-right-radius: 25px; border-bottom-right-radius: 25px;"
+        />
+      </div>
+    </form>
+  </div>
 </div>
+
 
 
 

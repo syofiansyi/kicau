@@ -54,7 +54,7 @@ class BeritaController extends Controller
         // Jika sedang searching dan total hasil 0 → redirect ke halaman list semua artikel
         if ($isSearching && $news->total() === 0) {
             // kalau punya nama route: return redirect()->route('artikel_berita')->with('error', 'Tidak ada data berita ditemukan.');
-            return redirect()->to(url('/artikel_berita'))->with('error', 'Tidak ada data berita ditemukan.');
+            return redirect()->to(url('/artikel_berita'))->with('error', 'Data yang dicari tidak ditemukan.');
         }
 
         return view('frontend.views.artikel_berita.index', compact('news', 'Hotnews', 'search'));

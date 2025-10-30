@@ -40,7 +40,7 @@ class EventController extends Controller
         // Jika memang sedang mencari dan total hasil = 0, arahkan ke "semua event"
         if ($isSearching && $events->total() === 0) {
             return redirect()->route('event-all')
-                ->with('error', 'Tidak ada data event ditemukan.');
+                ->with('error', 'Data yang dicari tidak ditemukan.');
         }
 
         return view('frontend.views.event.index', compact('events', 'search'));
