@@ -12,38 +12,58 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function index(Request $request)
+  public function index(Request $request)
 {
     try {
-        $search = $request->input('search');
+        $search = trim((string) $request->input('search'));
+        $isSearching = $request->has('search') && filled($search);
 
-        $news = News::where('status', 0)
-            ->where('category', 0)
-            ->when($search, function ($query, $search) {
-                $query->where(function ($q) use ($search) {
-                    $q->where('title', 'LIKE', "%{$search}%")
-                      ->orWhere('tanggal', 'LIKE', "%{$search}%");
-                });
-            })
-            ->latest()
-            ->paginate(20);
+        $newsQuery = News::where('status', 0)->where('category', 0);
 
+        if ($isSearching) {
+            $newsQuery->where(function ($q) use ($search) {
+                // Jika 'tanggal' bertipe STRING/VARCHAR, pakai ILIKE langsung:
+                $q->where('title', 'ILIKE', "%{$search}%")
+                  ->orWhere('tanggal', 'ILIKE', "%{$search}%");
+
+                // Jika 'tanggal' bertipe DATE, ganti baris orWhere di atas
+                // dengan salah satu dari dua baris di bawah ini (pilih salah satu):
+                // $q->orWhereRaw("to_char(tanggal, 'YYYY-MM-DD') ILIKE ?", ["%{$search}%"]);
+                // $q->orWhereRaw("CAST(tanggal AS TEXT) ILIKE ?", ["%{$search}%"]);
+            });
+        }
+
+        $news = $newsQuery
+            ->latest()                 // kalau mau urut berdasarkan tanggal berita: ->orderByDesc('tanggal')
+            ->paginate(20)
+            ->withQueryString();       // pertahankan ?search= saat pindah halaman
+
+        // Tangani kasus page di luar jangkauan (mis. ?page=999)
+        if ($news->isEmpty() && $news->currentPage() > 1 && $news->lastPage() >= 1) {
+            return redirect()->to($request->url() . '?' . http_build_query(array_merge(
+                $request->query(), ['page' => $news->lastPage()]
+            )));
+        }
+
+        // Hot news (tetap tampil normal)
         $Hotnews = News::where('status', 0)
             ->where('category', 1)
             ->latest()
             ->get();
 
-        // kalau tidak ada data sama sekali
-        if ($news->isEmpty() && $Hotnews->isEmpty()) {
-            return redirect()->back()->with('error', 'Tidak ada data berita ditemukan.');
+        // Jika sedang searching dan total hasil 0 → redirect ke halaman list semua artikel
+        if ($isSearching && $news->total() === 0) {
+            // kalau punya nama route: return redirect()->route('artikel_berita')->with('error', 'Tidak ada data berita ditemukan.');
+            return redirect()->to(url('/artikel_berita'))->with('error', 'Tidak ada data berita ditemukan.');
         }
 
         return view('frontend.views.artikel_berita.index', compact('news', 'Hotnews', 'search'));
+
     } catch (\Exception $e) {
-        // kalau query error, atau ada error lainnya
         return redirect()->back()->with('error', 'Terjadi kesalahan saat memuat berita: ' . $e->getMessage());
     }
 }
+
 
     public function DetailBerita($id,$slug){
 
