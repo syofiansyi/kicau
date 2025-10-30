@@ -10,17 +10,23 @@
                   <div class=" mt-4">
     <div class="d-flex justify-content-center mb-4">
     <form method="GET" action="{{ route('event-all') }}" style="width: 100%;">
-        <div class="input-group">
-            <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Cari Event..."
-                value="{{ request('search') }}"
-                aria-label="Cari Event"
-            />
-            <button class="btn btn-primary" type="submit">  <i class="fa fa-search"></i>
-</button>
+       <div class="input-group ">
+  <span
+    class="input-group-text bg-white"
+    style="border-right: none; padding-left: 1.5rem; padding-right: 0rem;"
+  >
+    <i class="fa fa-search"></i>
+  </span>
+  <input
+    type="text"
+    name="search"
+    class="form-control shadow-gray-100"
+    placeholder="Cari di Kopdar Loverbird Indonesia ....."
+    value="{{ request('search') }}"
+    aria-label="Cari Pertandingan"
+    style="border-left: none;"
+  />
+</div>
         </div>
     </form>
 </div>
