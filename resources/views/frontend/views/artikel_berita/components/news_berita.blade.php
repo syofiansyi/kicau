@@ -1,5 +1,4 @@
 <div class=" mt-4">
-    <h3 class="fw-bold">Lates News</h3>
     <div class="d-flex justify-content-center mb-4">
     <form method="GET" action="{{ route('artikel_berita') }}" style="width: 100%;">
       <div class="input-group" style="border-radius: 25px">
@@ -36,6 +35,8 @@ style="
       </div>
     </form>
   </div>
+      <h3 class="fw-bold">Lates News</h3>
+
     <div class="row">
         @foreach ($news as $berita)
         <div class="col-md-6 col-lg-3 mb-4">

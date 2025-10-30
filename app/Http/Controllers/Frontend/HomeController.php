@@ -16,14 +16,13 @@ use App\Models\Slider;
 
 class HomeController extends Controller
 {
-  public function index(Request $request)
+ public function index(Request $request)
 {
     try {
         $search = $request->input('search');
         $filter = $request->input('filter');
-
-        // redirect jika user melakukan pencarian
-        if ($request->has('search') && filled($search)) {
+        $isSearching = $request->has('search') && $filter == 'all';
+ if ($request->has('search') && filled($search)) {
             switch ($filter) {
                 case 'news':
                     // arahkan ke /artikel_berita?search=...
@@ -44,23 +43,49 @@ class HomeController extends Controller
                     break;
             }
         }
+      
+           $sliders = Slider::where('status', 0)->latest()->get();
+           $events = Event::where('status', 0)
+                ->when($isSearching, function ($query) use ($search) {
+                    $query->where(function ($q) use ($search) {
+                        $q->where('title', 'ILIKE', "%{$search}%")
+                        ->orWhere('tanggal', 'ILIKE', "%{$search}%")
+                        ->orWhere('lokasi', 'ILIKE', "%{$search}%");
+                    });
+                })
+                ->latest() // ganti ke ->orderByDesc('tanggal') kalau mau urut berdasar tanggal event
+                ->paginate(30)
+                ->withQueryString();
 
-        // data default home
-        $sliders = Slider::where('status', 0)->latest()->get();
-        $events = Event::where('status', 0)->latest()->take(10)->get();
-        $hot = News::where('status', 0)->latest()->take(1)->get();
-        $news = News::where('status', 0)->latest()->take(10)->get();
-        $klasement = Klasement::where('status', 0)->orderBy('posisi', 'desc')->get();
-        $pertandingan = Hasil_pertandingan::where('status', 0)->latest()->get();
-        $juara = Juara::where('status', 0)->latest()->take(10)->get();
-
-        $jadwals = Jadwal::where('status', 0)
+                
+            $hot = News::where('status', 0)->latest()->take(1)->get();
+            $news = News::where('status', 0)
+            ->when($isSearching, function ($query) use ($search) {
+                $query->where('title', 'ILIKE', "%{$search}%");
+            })
             ->latest()
-            ->paginate(20, ['*'], 'jadwals_page')
-            ->withQueryString();
+            ->take(10)
+            ->get();           
+            $klasement = Klasement::where('status', 0)->orderBy('posisi', 'desc')->get();
+            $pertandingan = Hasil_pertandingan::where('status', 0)->latest()->get();
+            $juara = Juara::where('status', 0)->when($isSearching, function ($query) use ($search) {
+                    $query->where(function ($q) use ($search) {
+                        $q->where('title', 'ILIKE', "%{$search}%");
+                        
+                    });
+                })->latest()->take(10)->get();
+            $jadwals = Jadwal::where('status', 0)->when($isSearching, function ($query) use ($search) {
+                    $query->where(function ($q) use ($search) {
+                        $q->where('title', 'ILIKE', "%{$search}%");});
+                })->latest()->paginate(20, ['*'], 'jadwals_page')->withQueryString();
 
-        return view('frontend.views.home.index', compact(
-            'sliders','events','hot','news','klasement','pertandingan','juara','jadwals','search','filter'
+          
+
+        
+        
+             return view('frontend.views.home.index', compact(
+            'sliders', 'events', 'hot', 'news', 'klasement',
+            'pertandingan', 'juara', 'jadwals', 'search', 'filter'
         ));
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Terjadi kesalahan saat memuat data: ' . $e->getMessage());
