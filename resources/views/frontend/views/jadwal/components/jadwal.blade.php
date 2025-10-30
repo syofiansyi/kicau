@@ -4,8 +4,6 @@
         <div class="app-container container-fluid">
             <!--Event-->
             <div class="event-carousel transition-all duration-1000 ease-in-out">
-                <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Jadwal Event</h3>
-                <h1 class="text-center text-2xl font-bold">Jadwal Pertandingan</h1>
                  <div class=" mt-4">
     <div class="d-flex justify-content-center mb-4">
     <form method="GET" action="{{ route('pertandingan') }}" style="width: 60%;">
@@ -18,10 +16,14 @@
                 value="{{ request('search') }}"
                 aria-label="Cari Pertandingan"
             />
-            <button class="btn btn-primary" type="submit">Cari</button>
+            <button class="btn btn-primary" type="submit">  <i class="fa fa-search"></i>
+</button>
         </div>
     </form>
 </div>
+                <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Jadwal Event</h3>
+                <h1 class="text-center text-2xl font-bold">Jadwal Pertandingan</h1>
+                
                 <div class="row">
                     @foreach ($jadwals  as $jadwal)
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
