@@ -6,15 +6,11 @@
       class="input-group d-flex"
       style="
         width: 100%;
-        border-radius: 25px;
-        overflow: hidden;
-        border: 1px solid #ddd;
-        display: flex;
-        align-items: center;
+        
       "
     >
       <span
-        class="input-group-text bg-white"
+        class="bg-white"
         style="
           border-right: none;
           padding-left: 1.5rem;
