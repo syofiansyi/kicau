@@ -64,6 +64,21 @@
                                     <span class="menu-title">Jadwal Pertandingan</span>
                                 </a>
                             </div>
+                             <div class="menu-item me-lg-1">
+                                <a class="menu-link {{ $route == 'backend.tips.index' ? 'active' : '' }}  py-3" href="{{ route('backend.tips.index') }}">
+                                    <span class="menu-title">Tips & Trik</span>
+                                </a>
+                            </div>
+                             <div class="menu-item me-lg-1">
+                                <a class="menu-link {{ $route == 'backend.anggota.index' ? 'active' : '' }}  py-3" href="{{ route('backend.anggota.index') }}">
+                                    <span class="menu-title">Anggota</span>
+                                </a>
+                            </div>
+                             <div class="menu-item me-lg-1">
+                                <a class="menu-link {{ $route == 'backend.produk.index' ? 'active' : '' }}  py-3" href="{{ route('backend.produk.index') }}">
+                                    <span class="menu-title">Produk</span>
+                                </a>
+                            </div>
 
                     </div>
                     <!--end::Menu-->

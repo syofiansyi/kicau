@@ -211,3 +211,50 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/about', 'index')->name('about');
 });
 
+// BACKEND
+Route::prefix('admin')
+    ->name('backend.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::resource('tips', \App\Http\Controllers\Backend\TipsController::class)
+            ->except(['show']);
+    });
+
+// FRONTEND
+Route::get('/tips', [\App\Http\Controllers\Frontend\TipsController::class, 'index'])
+    ->name('tips');
+
+Route::get('/tips/{slug}', [\App\Http\Controllers\Frontend\TipsController::class, 'show'])
+    ->name('tips.detail');
+
+
+    Route::prefix('admin')
+    ->name('backend.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::resource('anggota', \App\Http\Controllers\Backend\AnggotaController::class)
+            ->except(['show']);
+    });
+
+// FRONTEND
+Route::get('/anggota', [\App\Http\Controllers\Frontend\AnggotaController::class, 'index'])
+    ->name('anggota');
+
+Route::get('/anggota/{slug}', [\App\Http\Controllers\Frontend\AnggotaController::class, 'show'])
+    ->name('anggota.detail');
+
+
+        Route::prefix('admin')
+    ->name('backend.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::resource('produk', \App\Http\Controllers\Backend\ProdukController::class)
+            ->except(['show']);
+    });
+
+// FRONTEND
+Route::get('/produk', [\App\Http\Controllers\Frontend\ProdukController::class, 'index'])
+    ->name('produk');
+
+Route::get('/produk/{slug}', [\App\Http\Controllers\Frontend\ProdukController::class, 'show'])
+    ->name('produk.detail');

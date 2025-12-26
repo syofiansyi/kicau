@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Anggota;
+use App\Models\Produk;
 use App\Models\Hasil_pertandingan;
 use App\Models\Juara;
+use App\Models\Tip;
 use App\Models\Klasement;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -34,9 +37,13 @@ class HomeController extends Controller
                         return redirect()->to(
                             url('/event') . '?search=' . rawurlencode($search)
                         );
-                    case 'jadwals':
+                    case 'produk':
                         return redirect()->to(
-                            url('/jadwal_pertandingan') . '?search=' . rawurlencode($search)
+                            url('/produk') . '?search=' . rawurlencode($search)
+                        );
+                    case 'tips':
+                        return redirect()->to(
+                            url('/tips') . '?search=' . rawurlencode($search)
                         );
                     default:
                         // tetap di home jika filter kosong / tak dikenal
@@ -66,7 +73,15 @@ class HomeController extends Controller
                 ->latest()
                 ->take(10)
                 ->get();
+
+            $tips = Tip::when($isSearching, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'ILIKE', "%{$search}%");
+                });
+            })->latest()->take(10)->get();
+
             $klasement = Klasement::where('status', 0)->orderBy('posisi', 'desc')->get();
+            $anggota = Anggota::latest('id')->get();
             $pertandingan = Hasil_pertandingan::where('status', 0)->latest()->get();
             $juara = Juara::where('status', 0)->when($isSearching, function ($query) use ($search) {
                 $query->where(function ($q) use ($search) {
@@ -78,7 +93,11 @@ class HomeController extends Controller
                     $q->where('title', 'ILIKE', "%{$search}%");
                 });
             })->latest()->paginate(20, ['*'], 'jadwals_page')->withQueryString();
-
+            $produk = Produk::when($isSearching, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'ILIKE', "%{$search}%");
+                });
+            })->latest()->take(10)->get();
 
             if ($isSearching) {
 
@@ -87,8 +106,8 @@ class HomeController extends Controller
                 if (
                     $events->isEmpty() ||
                     $news->isEmpty() ||
-                    $jadwals->isEmpty() ||
-                    $juara->isEmpty()
+                    $produk->isEmpty() ||
+                    $tips->isEmpty()
                 ) {
                     session()->flash('error', 'Data yang dicari tidak ditemukan di beberopa kategori.');
                 }
@@ -108,7 +127,11 @@ class HomeController extends Controller
                 'juara',
                 'jadwals',
                 'search',
-                'filter'
+                'filter',
+                'tips',
+                'produk',
+                'anggota'
+
             ));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat memuat data: ' . $e->getMessage());

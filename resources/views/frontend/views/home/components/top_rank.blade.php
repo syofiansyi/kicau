@@ -2,7 +2,7 @@
 <div class="mt-4">
     <!-- Title -->
     <div class="pt-5">
-        <h2 class="fw-bold">Top Rank</h2>
+        <h2 class="text-left text-2xl font-bold">Top Rank</h2>
         <p class="text-muted">Pecinta Lovebird Terkemuka: Mereka yang Mengukir Sejarah</p>
     </div>
 
