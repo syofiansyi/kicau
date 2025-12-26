@@ -23,16 +23,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($anggota as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>
-                                    <img src="{{ asset('Upload/anggota/' . $item->photo) }}" alt="Logo" class="me-2" width="50" height="50" />
-                                    {{ $item->nama_burung }}
-                                </td>
-                                <td>{{ $item->nama_pemilik }}</td>
-                                <td>{{ $item->alamat }}</td>
-                            </tr>
+                            @foreach ($anggota as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        <div class="flex items-center gap-2">
+                                            <img src="{{ asset('Upload/anggota/' . $item->photo) }}" alt="Logo"
+                                                class="w-[50px] h-[50px] object-cover rounded" loading="lazy">
+                                            <span class="whitespace-nowrap">
+                                                {{ $item->nama_burung }}
+                                            </span>
+                                        </div>
+                                    </td>
+
+                                    <td>{{ $item->nama_pemilik }}</td>
+                                    <td>{{ $item->alamat }}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
