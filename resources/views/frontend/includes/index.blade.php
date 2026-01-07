@@ -78,40 +78,31 @@
 </head>
 
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed"
-    style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
-    <div class="d-flex flex-column flex-root">
-        <div class="page d-flex flex-row flex-column-fluid">
-            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+    style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px; margin:0; padding:0; width:100%;">
+    
+    <div class="d-flex flex-column flex-root" style="margin:0; padding:0; width:100%;">
+        <div class="page d-flex flex-row flex-column-fluid w-full" style="margin:0; padding:0; width:100%;">
+            <div class="wrapper d-flex flex-column flex-row-fluid w-full" id="kt_wrapper" style="margin:0; padding:0; width:100%;">
+                
                 @include('frontend.includes.header')
                 @yield('slider')
 
-                <div class="d-flex flex-column flex-column-fluid" id="kt_content">
-                    <div class="post d-flex flex-column-fluid" id="kt_post">
-                        <div id="kt_content_container" class="container-fluid">
+                <div class="d-flex flex-column flex-column-fluid w-full" id="kt_content" style="margin:0; padding:0; width:100%;">
+                    <div class="post d-flex flex-column-fluid w-full" id="kt_post" style="margin:0; padding:0; width:100%;">
+                        <div id="kt_content_container" class="container-fluid px-0" style="margin:0; padding:0; width:100%;">
                             @yield('main')
                         </div>
                     </div>
                 </div>
 
                 @include('frontend.includes.footer')
+
             </div>
         </div>
     </div>
 
-    @stack('prepend-script')
-    @stack('addon-script')
-
-    <!-- Scripts -->
-    <script src="{{ asset('Frontend/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('Frontend/assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('Frontend/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset('Frontend/assets/js/custom/widgets.j') }}"></script>
-    <script src="{{ asset('Frontend/assets/js/custom/apps/chat/chat.js') }}"></script>
-    <script src="{{ asset('Frontend/assets/js/custom/modals/create-app.js') }}"></script>
-    <script src="{{ asset('Frontend/assets/js/custom/modals/upgrade-plan.js') }}"></script>
-    @stack('scripts')
-
 </body>
+
 
 </html>
 

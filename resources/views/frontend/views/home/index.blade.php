@@ -17,7 +17,7 @@
 
     <div class="flex min-h-screen">
         {{-- KIRI: CONTENT --}}
-        <div class="w-3/5 px-4 py-6 mx-auto space-y-10">
+        <div class="w-4/5 px-4 py-6 mx-auto space-y-10">
             @include('frontend.views.home.components.event')
             <div class="relative w-full my-12">
                 <div class="h-1 w-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 rounded-full shadow-md">

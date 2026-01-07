@@ -1,6 +1,6 @@
-<div class="w-2/5 p-6">
-    <div class="sticky top-0 h-screen flex items-center">
-        <div class="relative w-full h-full flex items-center">
+<div class="w-full">
+    <div class="sticky top-0 h-screen flex justify-end items-center">
+        <div class="relative h-full flex items-center">
 
             <!-- SOCIAL POPUP -->
             <div id="socialPopup"
@@ -11,15 +11,13 @@
 
                 <a href="https://vt.tiktok.com/ZS51kyvyj/?page=Mall" target="_blank">
                     <img src="{{ asset('Upload/slider/tiktok.png') }}"
-                        class="w-20 h-20 rounded-lg shadow-lg
-                                hover:scale-105 transition-transform"
+                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform"
                         alt="TikTok">
                 </a>
 
                 <a href="https://s.shopee.co.id/7fT5gAwZM6" target="_blank">
                     <img src="{{ asset('Upload/slider/shopee.jpg') }}"
-                        class="w-20 h-20 rounded-lg shadow-lg
-                                hover:scale-105 transition-transform"
+                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform"
                         alt="Shopee">
                 </a>
             </div>
@@ -32,6 +30,7 @@
         </div>
     </div>
 </div>
+
 <script>
     const banner = document.getElementById('banner');
     const popup = document.getElementById('socialPopup');

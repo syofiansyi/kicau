@@ -44,7 +44,7 @@
     <h3 class="text-center text-lg font-semibold text-gray-500">Lovedbird Tips & Trik</h3>
     <h1 class="text-center text-2xl font-bold mb-6">Tips & Trik</h1>
     <div class="flex min-h-screen">
-        <div class="w-4/5  p-6">
+      <div class="flex-shrink-0 w-4/5">
 
             @include('frontend.views.tips.components.tips')
 

@@ -1,4 +1,4 @@
-<div class=" mt-4">
+<div class=" m-4">
 
       <h3 class="fw-bold">Lates News</h3>
 

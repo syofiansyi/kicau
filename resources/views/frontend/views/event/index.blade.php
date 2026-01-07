@@ -45,7 +45,7 @@
     <h1 class="text-center text-2xl font-bold ">Schedule</h1>
     <div class="flex min-h-screen">
         {{-- KIRI: CONTENT --}}
-        <div class="w-4/5  ">
+       <div class="flex-shrink-0 w-4/5">
 
             @include('frontend.views.event.components.event')
 
