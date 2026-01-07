@@ -13,7 +13,7 @@
     @include('components.alert')
 
     @include('frontend.views.artikel_berita.components.hero_slide')
-    @include('components.search')
+    @include('components.searchberita')
 
 
     @include('components.sosmed')
