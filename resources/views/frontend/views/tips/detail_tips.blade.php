@@ -39,16 +39,7 @@
                                  Tips & Trik
                             </a>
                         </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="breadcrumb-item">
-                            <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">
-                            Tips {{ $tips->title }}
-                        </li>
+                       
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
