@@ -69,7 +69,7 @@
                 <!-- Keterangan -->
                 <div class="d-flex w-100" style="min-height: 100vh;">
                     <!-- Konten Juara 4/5 -->
-                    <div class="flex-grow-1" style="width: 300%;">
+                    <div class="flex-grow-1" style="width: 80;">
                         <h3 class="fw-bold" style="text-align: center; margin-top: 10px; margin-bottom: 0;">
                             {{ $juara->title }}
                         </h3>
