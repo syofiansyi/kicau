@@ -1,18 +1,13 @@
 <!-- start footer -->
-<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+<div class="footer py-4 d-flex justify-content-center align-items-center" id="kt_footer">
     <!--begin::Container-->
-    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+    <div class="container-fluid text-center">
         <!--begin::Copyright-->
-        <div class="text-dark order-2 order-md-1">
+        <div class="text-dark">
             <span class="text-muted fw-bold me-1">2025©</span>
-            <a href="=" target="_blank" class="text-gray-800 text-hover-primary">Kopdar LoveBird Indonesia</a>
+            <a href="#" target="_blank" class="text-gray-800 text-hover-primary">Kopdar LoveBird Indonesia</a>
         </div>
         <!--end::Copyright-->
-        <!--begin::Menu-->
-        <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-           
-        </ul>
-        <!--end::Menu-->
     </div>
     <!--end::Container-->
 </div>
