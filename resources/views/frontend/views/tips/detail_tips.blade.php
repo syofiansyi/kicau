@@ -18,7 +18,7 @@
     <div class="flex min-h-screen w-full">
 
         {{-- Konten Kiri 4/5 --}}
-        <div class="flex-shrink-0 w-4/5">
+        <div class="flex-shrink-0 w-5/6">
             <div class="d-flex flex-column flex-column-fluid">
                 <div id="kt_app_toolbar" class="app-toolbar  py-3 py-lg-6 ">
                     <!--begin::Toolbar container-->

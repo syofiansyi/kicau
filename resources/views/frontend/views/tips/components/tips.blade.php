@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row p-10">
     @foreach ($tips as $tip)
         <div class="col-lg-3 col-md-6 col-sm-12 mb-4 d-flex">
 
