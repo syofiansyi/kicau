@@ -15,6 +15,8 @@ class Produk extends Model
         'harga',
         'description',
         'slug',
+        'tiktok',
+        'shopee'
     ];
 
     protected static function booted()

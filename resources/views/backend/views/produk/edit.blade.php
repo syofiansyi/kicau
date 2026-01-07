@@ -63,12 +63,20 @@
 
                                         <div class="row mb-3">
                                             <div class="col-sm-12 text-secondary">
-                                                <img id="showImage"
-                                                    src="{{ asset('Upload/produk/' . $produk->photo) }}"
+                                                <img id="showImage" src="{{ asset('Upload/produk/' . $produk->photo) }}"
                                                     alt="Admin" style="width:100px; height: 100px;">
                                             </div>
                                         </div>
-
+                                        <div class="form-group col-6">
+                                            <label for="inputEmail4">Link Shopee</label>
+                                            <input type="text" class="form-control" id="inputEmail4"
+                                                placeholder="Input Link Shope" name="shopee">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="inputEmail4">Link Tiktok</label>
+                                            <input type="text" class="form-control" id="inputEmail4"
+                                                placeholder="Input Link Tiktok" name="tiktok">
+                                        </div>
 
                                         <div class="col-md-12 mt-4">
                                             <button type="submit" class="btn btn-success">Submit</button>

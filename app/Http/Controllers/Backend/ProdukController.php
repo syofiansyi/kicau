@@ -15,8 +15,8 @@ class ProdukController extends Controller
 {
     public function index(Request $request)
     {
-       $produk = Produk::latest()->get();
-        return view('backend.views.produk.index',compact('produk'));
+        $produk = Produk::latest()->get();
+        return view('backend.views.produk.index', compact('produk'));
     }
 
     public function create()
@@ -29,8 +29,10 @@ class ProdukController extends Controller
         $request->validate([
             'photo'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'title' => 'required|string|max:255',
-            'description'=> 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'harga'      => 'required|numeric',
+            'shopee' => 'required|string|max:255',
+            'tiktok' => 'required|string|max:255',
         ]);
 
         $photoName = null;
@@ -43,19 +45,22 @@ class ProdukController extends Controller
         Produk::create([
             'photo'       => $photoName,
             'title' => $request->title,
-            'description'=> $request->description,
+            'description' => $request->description,
             'harga'      => $request->harga,
+            'shopee' => $request->shopee,
+            'tiktok' => $request->tiktok,
         ]);
 
         return redirect()->route('backend.produk.index')
             ->with('success', 'Produk berhasil ditambahkan');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
         $produk = Produk::findorfail($id);
 
-        return view('backend.views.produk.edit',compact('produk'));
+        return view('backend.views.produk.edit', compact('produk'));
     }
     public function update(Request $request)
     {
@@ -68,6 +73,8 @@ class ProdukController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'harga' => $request->harga,
+            'shopee' => $request->shopee,
+            'tiktok' => $request->tiktok,
             'updated_at' => Carbon::now(),
         ];
 
@@ -100,21 +107,21 @@ class ProdukController extends Controller
         return redirect()->route('backend.produk.index')->with($notification);
     }
 
-  public function destroy($id, Request $request)
-{
-    $produk = Produk::find($id);
+    public function destroy($id, Request $request)
+    {
+        $produk = Produk::find($id);
 
-    if (!$produk) {
-        return back()->with('error', 'Produk tidak ditemukan');
-    }
+        if (!$produk) {
+            return back()->with('error', 'Produk tidak ditemukan');
+        }
 
-    // Hapus file photo jika ada
-    if ($produk->photo && file_exists(public_path('upload/produk/' . $produk->photo))) {
-        unlink(public_path('upload/produk/' . $produk->photo));
-    }
+        // Hapus file photo jika ada
+        if ($produk->photo && file_exists(public_path('upload/produk/' . $produk->photo))) {
+            unlink(public_path('upload/produk/' . $produk->photo));
+        }
 
-    $produk->delete();
-     $notification = [
+        $produk->delete();
+        $notification = [
             'message' => $request->hasFile('photo')
                 ? 'Produk deleted with new image successfully'
                 : 'Produk deleted without changing image',
@@ -122,6 +129,6 @@ class ProdukController extends Controller
         ];
 
 
- return redirect()->route('backend.produk.index')->with($notification);}
-
+        return redirect()->route('backend.produk.index')->with($notification);
+    }
 }

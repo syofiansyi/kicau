@@ -23,6 +23,8 @@
                         <th>Nama Produk</th>
                         <th>Description</th>
                         <th>Harga</th>
+                        <th>Link Tiktok</th>
+                        <th>Link Shopee</th>
                         <th>photo</th>
                         <th>Action</th>
                     </tr>
@@ -34,8 +36,9 @@
                             <td>{{ $hap->title }}</td>
                             <td>{!! Str::limit($hap->description, 50) !!}</td>
                             <td>Rp {{ number_format($hap->harga, 0, ',', '.') }}</td>
+                            <td>{{ $hap->shopee }}</td>
+                            <td>{{ $hap->tiktok }}</td>
 
-                            
                             <td><img class="tbl-thumb" src="{{ asset('Upload/produk/' . $hap->photo) }}" alt="No img"
                                     style="height:40px; width:40px " />
                             </td>
@@ -107,10 +110,10 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="inputEmail4">Description</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="Nama Burung"
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="Descripsi"
                                 name="description">
                         </div>
-                       
+
                         <div class="form-group col-6">
                             <label for="inputEmail4">Harga</label>
                             <input type="number" class="form-control" id="inputEmail4" placeholder="Harga"
@@ -123,6 +126,16 @@
                                 id="formFile" onChange="mainThamUrl(this)" required>
 
                             <img src="" id="photoMain" />
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="inputEmail4">Link Shopee</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="Input Link Shope"
+                                name="shopee">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="inputEmail4">Link Tiktok</label>
+                            <input type="text" class="form-control" id="inputEmail4"
+                                placeholder="Input Link Tiktok" name="tiktok">
                         </div>
                         <div class="row mt-5">
                             <button type="submit" class="btn btn-success ">Submit</button>
