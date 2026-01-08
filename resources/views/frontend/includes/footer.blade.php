@@ -23,8 +23,8 @@
         </div>
 
         <div class="share-grid">
-            <a href="https://wa.me/?text=https%3A%2F%2Fkopdarlovebirdindonesia.com%2F" target="_blank"
-                class="share-item">
+            <a href="#" target="_blank" class="share-item" onclick="shareWhatsApp(event)">
+
                 <div class="icon-wrapper bg-whatsapp">
                     <svg class="w-8 h-8" viewBox="0 0 24 24" aria-hidden="true">
                         <!-- Background -->
@@ -61,6 +61,8 @@
                 </div>
                 <span>WhatsApp</span>
             </a>
+
+
             <a href="https://www.tiktok.com/@kopdarlovebirdindonesia" target="_blank" class="share-item">
                 <div class="icon-wrapper bg-tiktok"> <svg class="w-8 h-8" viewBox="0 0 24 24">
                         <path fill="#000"
@@ -88,8 +90,7 @@
                     </svg></i></div>
                 <span>YouTube</span>
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkopdarlovebirdindonesia.com%2F"
-                target="_blank" class="share-item">
+            <a href="#" target="_blank" class="share-item" onclick="shareFb(event)">
                 <div class="icon-wrapper bg-facebook">
                     <!-- Icon Facebook -->
                     <svg class="w-8 h-8" viewBox="0 0 24 24" aria-hidden="true">
@@ -262,4 +263,21 @@
             }, 1500);
         });
     });
+</script>
+
+<script>
+    function shareWhatsApp(e) {
+        e.preventDefault();
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://wa.me/?text=${url}`, '_blank');
+    }
+</script>
+
+<script>
+    function shareFb(e) {
+        e.preventDefault();
+        const url = encodeURIComponent(window.location.href);
+        console.log(url)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
 </script>
