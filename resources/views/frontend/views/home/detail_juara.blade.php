@@ -9,29 +9,58 @@
     <link href="{{ asset('Frontend/css/event_style.css') }}" rel="stylesheet" type="text/css" />
     <style>
         table {
-            caption-side: bottom;
-            border-collapse: collapse;
-            border: 1px solid #000 !important;
             width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table caption {
+            caption-side: bottom;
+            font-style: italic;
+            padding: 8px;
+            color: #555;
         }
 
         table th,
         table td {
-            border: 1px solid #000 !important;
-            padding: 8px;
+            padding: 12px 16px;
+            padding-left: 24px;
+            /* padding kiri ekstra */
         }
 
-        /* Gambar full width tapi ada padding */
-        .juara-image {
-            width: 100%;
-            height: auto;
-            border-radius: 0.25rem; /* sedikit rounded */
+        table th {
+            background-color: #1e40af;
+            /* biru gelap untuk header */
+            color: #ffffff;
+            /* teks putih */
+            font-weight: 600;
+            border-bottom: 2px solid #1e3a8a;
+            text-align: center;
+            /* header ikut center */
         }
 
-        /* Konten full width dengan padding */
-        .juara-content {
-            width: 100%;
-            padding: 0 1.5rem; /* padding horizontal 24px */
+        table td {
+            text-align: center;
+            /* isi tabel center */
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) td {
+            background-color: #f3f4f6;
+        }
+
+        table tr:hover td {
+            background-color: #e0e7ff;
+            transition: background-color 0.2s;
+        }
+
+        table th:first-child,
+        table td:first-child {
+            border-right: 1px solid #ddd;
         }
     </style>
 @endpush
@@ -39,41 +68,50 @@
 @section('meta')
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $juara->title }}">
-    <meta property="og:image" content="{{ $juara->photo ? asset('Upload/juara/' . $juara->photo) : asset('Frontend/img/logo.png') }}">
+    <meta property="og:image"
+        content="{{ $juara->photo ? asset('Upload/juara/' . $juara->photo) : asset('Frontend/img/logo.png') }}">
     <meta property="og:url" content="{{ url()->current() }}">
 @endsection
 
 @section('main')
-<div class="d-flex flex-column flex-column-fluid">
-    <!-- Toolbar -->
-    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-        <div id="kt_app_toolbar_container" class="d-flex flex-stack w-100 px-3">
-            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                <h1 class="page-heading text-gray-900 fw-bold fs-3 my-0">
-                    Juara
-                </h1>
-            </div>
-        </div>
-    </div>
+    <div class="d-flex flex-column flex-column-fluid">
 
-    <!-- Content Full Width dengan padding -->
-    <div id="kt_app_content" class="app-content flex-column-fluid px-0">
-        <div class="juara-content d-flex flex-column align-items-start pt-4">
-            <!-- Gambar -->
-            @if($juara->photo)
-                <div class="mb-3 w-100">
-                    <img src="{{ asset('Upload/juara/' . $juara->photo) }}" alt="Gambar Juara" class="img-fluid shadow juara-image" />
+        <div id="kt_app_content" class="app-content flex-column-fluid px-0">
+            <div class="juara-content d-flex flex-column align-items-start pt-4">
+                <!-- Gambar -->
+                @if ($juara->photo)
+                    <div class="w-100">
+                        <img src="{{ asset('Upload/juara/' . $juara->photo) }}" alt="Gambar Juara" class="img-fluid w-100"
+                            style="height: auto; display: block;" />
+                    </div>
+                @endif
+
+                <!-- Keterangan -->
+                <div class="d-flex" style="width: 100vw; height: 100vh; overflow: hidden;">
+                    <!-- Kolom pertama 80% -->
+                    <div style="flex: 0 0 80%; overflow-x: auto; padding: 1rem;">
+                        <div>
+                            <div>
+                                <h3 class="fw-bold text-center" style="margin-bottom: 1.5rem;">
+                                    {{ $juara->title }}
+                                </h3>
+                            </div>
+
+                            <div>
+                                <p class="text-description" style="text-align: justify;">
+                                    {!! $juara->description !!}
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    @include('components.banner')
+
                 </div>
-            @endif
 
-            <!-- Keterangan -->
-            <div class="w-100">
-                <h3 class="fw-bold">{{ $juara->title }}</h3>
-                <p class="text-description" style="text-align: justify;">
-                    {!! $juara->description !!}
-                </p>
             </div>
         </div>
     </div>
-</div>
 @endsection
