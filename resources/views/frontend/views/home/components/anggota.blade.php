@@ -6,7 +6,7 @@
             Anggota KLI
         </h1>
         <h3 class="text-gray-500 text-sm font-light">
-            Produk Unggulan KLI Kopdar Lovebird Indonesia
+            Anggota Kopdar Lovebird Indonesia
         </h3>
     </div>
 
