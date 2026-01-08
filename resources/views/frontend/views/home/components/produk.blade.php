@@ -34,7 +34,7 @@
                     </h3>
 
                     <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        {{ Str::words(strip_tags($item->description), 30, '...') }} selengkapnya
+                        {{ Str::words(strip_tags($item->description), 30, '...') }} ....selengkapnya
                     </p>
                 </div>
 

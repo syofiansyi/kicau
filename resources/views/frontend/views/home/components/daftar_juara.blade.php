@@ -1,4 +1,4 @@
-<div class="event-section relative bg-gray-100 p-6 w-full">
+<div class="event-section relative bg-gray-100 px-6 py-8 w-full">
 
     <!-- Heading -->
     <div class="mb-6 text-left">
@@ -10,13 +10,11 @@
 
     <!-- Buttons -->
     <div class="flex gap-2 mb-4">
-        <button id="juara-prev"
-            class="bg-white border border-gray-300 rounded-full px-4 py-2 shadow disabled:opacity-40">
+        <button id="juara-prev" class="bg-white border border-gray-300 rounded-full px-4 py-2 shadow disabled:opacity-40">
             <i class="fa fa-chevron-left"></i>
         </button>
 
-        <button id="juara-next"
-            class="bg-white border border-gray-300 rounded-full px-4 py-2 shadow disabled:opacity-40">
+        <button id="juara-next" class="bg-white border border-gray-300 rounded-full px-4 py-2 shadow disabled:opacity-40">
             <i class="fa fa-chevron-right"></i>
         </button>
     </div>
@@ -25,70 +23,73 @@
     <div class="w-full lg:w-3/4 mx-auto overflow-hidden">
 
         <!-- CAROUSEL -->
-        <div id="carousel-juara" class="flex transition-transform duration-500 ease-in-out">
+        <div id="juara-carousel" class="flex transition-transform duration-500 ease-in-out">
 
-            @forelse ($juara as $event)
-                <div class="w-full flex-shrink-0 px-2">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden h-full">
+            @forelse ($juara as $juara)
+                <a href="{{ route('detail_juara', [$juara->id, $juara->slug]) }}" class="w-full flex-shrink-0 px-2">
 
-                        <a href="{{ route('detail_juara', [$event->id, $event->slug]) }}">
-                            <img src="{{ asset('Upload/juara/' . $event->photo) }}"
-                                class="w-full max-h-[30vh] object-cover">
-                        </a>
+                    <div
+                        class="bg-white rounded-xl shadow-md overflow-hidden
+                    transition hover:shadow-lg">
 
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-4">
-                                {{ $event->title }}
+                        <img src="{{ asset('Upload/juara/' . $juara->photo) }}" class="w-full max-h-[30vh] object-cover">
+
+                        <div class="p-6">
+                            <h3 class="font-semibold text-xl mb-3">
+                                {{ $juara->title }}
                             </h3>
+
                             <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                                    {{ Str::words(strip_tags($event->description), 30, '...') }}
+                                    {{ Str::words(strip_tags($juara->description), 30, '...') }}
                                     selengkapnya
                                 </p>
 
-                            <a href="{{ route('detail_juara', [$event->id, $event->slug]) }}"
-                                class="inline-block px-4 py-2 text-white text-sm rounded bg-black">
-                                Detail Juara
-                            </a>
+
+                            <p class="text-sm text-gray-500">
+                                <i class="fa fa-calendar"></i> {{ $juara->created_at }}
+                            </p>
                         </div>
                     </div>
-                </div>
+
+                </a>
             @empty
                 <p class="text-center text-gray-500 w-full">
-                    Data juara belum tersedia
+                    juara belum tersedia
                 </p>
             @endforelse
+
 
         </div>
     </div>
 </div>
 <script>
-    const juaraCarousel = document.getElementById('carousel-juara');
+    const juaraCarousel = document.getElementById('juara-carousel');
     const juaraPrev = document.getElementById('juara-prev');
     const juaraNext = document.getElementById('juara-next');
 
-    const totalJuara = juaraCarousel.children.length;
+    const totaljuara = juaraCarousel.children.length;
     let juaraIndex = 0;
 
-    function updateJuaraCarousel() {
+    function updatejuaraCarousel() {
         juaraCarousel.style.transform = `translateX(-${juaraIndex * 100}%)`;
 
         juaraPrev.disabled = juaraIndex === 0;
-        juaraNext.disabled = juaraIndex === totalJuara - 1;
+        juaraNext.disabled = juaraIndex === totaljuara - 1;
     }
 
     juaraNext.addEventListener('click', () => {
-        if (juaraIndex < totalJuara - 1) {
+        if (juaraIndex < totaljuara - 1) {
             juaraIndex++;
-            updateJuaraCarousel();
+            updatejuaraCarousel();
         }
     });
 
     juaraPrev.addEventListener('click', () => {
         if (juaraIndex > 0) {
             juaraIndex--;
-            updateJuaraCarousel();
+            updatejuaraCarousel();
         }
     });
 
-    updateJuaraCarousel();
+    updatejuaraCarousel();
 </script>
