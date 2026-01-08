@@ -62,33 +62,14 @@
                 <span>WhatsApp</span>
             </a>
 
-
-            <a href="https://www.tiktok.com/@kopdarlovebirdindonesia" target="_blank" class="share-item">
-                <div class="icon-wrapper bg-tiktok"> <svg class="w-8 h-8" viewBox="0 0 24 24">
-                        <path fill="#000"
-                            d="M16 2c.4 2.6 2.4 4.6 5 5v4.1
-                                                                                          c-1.9 0-3.6-.6-5-1.6v6.4
-                                                                                          a6.5 6.5 0 1 1-6.5-6.5
-                                                                                          c.4 0 .8 0 1.2.1v4.3
-                                                                                          a2.3 2.3 0 1 0 1.8 2.2V2h3.5z" />
-                    </svg></i></div>
-                <span>TikTok</span>
-            </a>
-            <a href="https://youtube.com/@abfhobbychannel2250" target="_blank" class="share-item">
-                <div class="icon-wrapper bg-youtube"> <svg class="w-8 h-8" viewBox="0 0 24 24">
-                        <path fill="#FF0000"
-                            d="M23.5 6.2s-.2-1.6-.9-2.3
-                                                                                          c-.8-.9-1.7-.9-2.1-1
-                                                                                          C17.5 2.5 12 2.5 12 2.5
-                                                                                          s-5.5 0-8.5.4c-.4.1-1.3.1-2.1 1
-                                                                                          -.7.7-.9 2.3-.9 2.3S0 8 0 9.8v1.8
-                                                                                          c0 1.8.2 3.6.2 3.6s.2 1.6.9 2.3
-                                                                                          c.8.9 1.9.9 2.4 1 1.7.2 7.5.4 7.5.4
-                                                                                          s5.5 0 8.5-.4c.4-.1 1.3-.1 2.1-1
-                                                                                          .7-.7.9-2.3.9-2.3s.2-1.8.2-3.6V9.8z" />
-                        <polygon fill="#fff" points="9.5,9.5 14.5,12 9.5,14.5" />
-                    </svg></i></div>
-                <span>YouTube</span>
+            <a href="#" target="_blank" class="share-item" onclick="shareTwitter(event)">
+                <div class="icon-wrapper bg-twitter">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#000000"
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </div>
+                <span>Twitter</span>
             </a>
             <a href="#" target="_blank" class="share-item" onclick="shareFb(event)">
                 <div class="icon-wrapper bg-facebook">
@@ -100,24 +81,7 @@
                 </div>
                 <span>Facebook</span>
             </a>
-            <a href="https://www.instagram.com/kopdar_lovebird_indonesia" target="_blank" class="share-item">
-                <div class="icon-wrapper bg-instagram"> <svg class="w-8 h-8" viewBox="0 0 24 24">
-                        <defs>
-                            <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#FEDA75" />
-                                <stop offset="30%" stop-color="#FA7E1E" />
-                                <stop offset="60%" stop-color="#D62976" />
-                                <stop offset="100%" stop-color="#962FBF" />
-                            </linearGradient>
-                        </defs>
-                        <path fill="url(#ig)"
-                            d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10
-                                                                                          c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7z" />
-                        <circle cx="12" cy="12" r="3.5" fill="none" stroke="#fff"
-                            stroke-width="1.5" />
-                    </svg></i></div>
-                <span>Instagram</span>
-            </a>
+
             <button class="share-item border-0 bg-transparent" id="copyLinkBtn">
                 <div class="icon-wrapper bg-secondary"><i class="bi bi-link-45deg"></i></div>
                 <span>Salin Link</span>
@@ -279,5 +243,18 @@
         const url = encodeURIComponent(window.location.href);
         console.log(url)
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+</script>
+
+<script>
+    function shareTwitter(event) {
+        event.preventDefault();
+        const url = encodeURIComponent(window.location.href); // Mengambil URL halaman aktif
+
+        window.open(
+            `https://twitter.com/intent/tweet?url=${url}`,
+            'share-twitter',
+            'width=550,height=450'
+        );
     }
 </script>
