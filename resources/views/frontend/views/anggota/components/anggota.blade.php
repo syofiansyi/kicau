@@ -13,7 +13,7 @@
                 <div class="relative">
                     <input type="text" 
                            name="search" 
-                           placeholder="Cari anggota..."
+                           placeholder="Cari di Kopdar Loverbird Indonesia..."
                            value="{{ request('search') }}"
                            class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent">
                     <button type="submit" 
