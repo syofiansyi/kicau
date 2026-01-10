@@ -14,7 +14,7 @@
      
 
     @include('components.sosmed')
-    <h3 class="text-center text-lg font-semibold text-gray-500">Anggota Kopdar LovedBird Indonesia</h3>
+    <h3 class="text-center text-lg mb-3 font-semibold text-gray-500">Anggota Kopdar LovedBird Indonesia</h3>
     <div class="flex min-h-screen">
       <div class="flex-shrink-0 w-4/5">
 
