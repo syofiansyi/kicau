@@ -1,4 +1,4 @@
-<div class="anggota-section relative bg-gray-100 px-6 py-8 w-full min-h-screen">
+<div class="anggota-section relative bg-gray-100 px-6 py-8 w-full">
 
     <div class="mb-6 text-left">
         <h1 class="text-2xl font-bold">
