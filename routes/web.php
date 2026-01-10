@@ -240,8 +240,8 @@ Route::get('/tips/{slug}', [\App\Http\Controllers\Frontend\TipsController::class
 Route::get('/anggota', [\App\Http\Controllers\Frontend\AnggotaController::class, 'index'])
     ->name('anggota');
 
-Route::get('/anggota/{slug}', [\App\Http\Controllers\Frontend\AnggotaController::class, 'show'])
-    ->name('anggota.detail');
+// Route::get('/anggota/{slug}', [\App\Http\Controllers\Frontend\AnggotaController::class, 'show'])
+//     ->name('anggota.detail');
 
 
         Route::prefix('admin')
@@ -253,8 +253,8 @@ Route::get('/anggota/{slug}', [\App\Http\Controllers\Frontend\AnggotaController:
     });
 
 // FRONTEND
-Route::get('/produk', [\App\Http\Controllers\Frontend\ProdukController::class, 'index'])
-    ->name('produk');
+// Route::get('/produk', [\App\Http\Controllers\Frontend\ProdukController::class, 'index'])
+//     ->name('produk');
 
-Route::get('/produk/{slug}', [\App\Http\Controllers\Frontend\ProdukController::class, 'show'])
-    ->name('produk.detail');
+// Route::get('/produk/{slug}', [\App\Http\Controllers\Frontend\ProdukController::class, 'show'])
+//     ->name('produk.detail');

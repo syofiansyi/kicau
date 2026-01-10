@@ -19,7 +19,7 @@ class AnggotaController extends Controller
             });
         })
             ->latest()
-            ->paginate(6);
+            ->paginate(10);
 
 
         if ($search && $anggota->total() === 0) {
@@ -27,7 +27,7 @@ class AnggotaController extends Controller
                 ->with('error', 'Data yang dicari tidak ditemukan.');
         }
 
-        return view('frontend.anggota.index', compact('anggota'));
+        return view('frontend.views.anggota.index', compact('anggota'));
     }
 
     public function show($id)

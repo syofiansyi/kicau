@@ -14,6 +14,7 @@
         <div class="row mt-4">
 
             <!-- Tabel -->
+             <a href="{{ route('anggota') }}">
             <div class="col-lg-12">
                 <div class="scrollable-table overflow-x-auto bg-white rounded-lg shadow">
                     <table class="table table-bordered w-full text-black">
@@ -59,7 +60,7 @@
                     </table>
                 </div>
             </div>
-
+             </a>
         </div>
     </div>
 </div>

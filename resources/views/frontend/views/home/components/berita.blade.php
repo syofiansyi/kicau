@@ -27,30 +27,39 @@
             <div id="news-carousel" class="flex transition-transform duration-300 ease-in-out">
 
                 @foreach ($news as $berita)
-                    <a href="{{ route('detail_berita', [$berita->id, $berita->slug]) }}" class="w-full flex-shrink-0">
+                    <div  class="w-full flex-shrink-0">
 
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
 
+                            
+
+                                 <div class="w-full h-[30vh] overflow-auto">
                             <img src="{{ asset('Upload/news/' . $berita->photo) }}"
-                                class="w-full max-h-[30vh] object-cover">
+                                class="min-w-full min-h-full object-fill" />
+                        </div>
 
                             <div class="p-6">
                                 <h3 class="font-semibold text-xl mb-3">
                                     {{ $berita->title }}
                                 </h3>
-                                <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                                    {{ Str::words(strip_tags($berita->description), 30, '...') }}
-                                    selengkapnya
-                                </p>
+                                 <p class="text-gray-600 mb-4 text-sm max-h-5vh leading-relaxed line-clamp-4">
+                                {!! strip_tags($berita->description) !!}
+
+                            </p>
 
 
                                 <p class="text-sm text-gray-500">
                                     <i class="fa fa-calendar"></i> {{ $berita->tanggal }}
                                 </p>
+
+                                  <a href="{{ route('detail_berita', [$berita->id, $berita->slug]) }}"
+                                class="inline-block mt-4 px-4 py-2 text-white text-sm rounded bg-black">
+                                Detail Berita
+                            </a>
                             </div>
                         </div>
 
-                    </a>
+                    </div>
                 @endforeach
 
 

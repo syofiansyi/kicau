@@ -17,9 +17,9 @@
               transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
                 <!-- Image -->
-                <div class="overflow-hidden cursor-pointer">
+                 <div class="w-full h-[30vh] overflow-auto">
                     <img src="{{ asset('Upload/produk/' . $item->photo) }}"
-                        class="w-full max-h-[30vh] object-cover transition-transform duration-300 group-hover:scale-105"
+                        class="min-w-full min-h-full object-fill"
                         onclick="showPopup('popup-{{ $item->id }}')">
                 </div>
 
@@ -33,9 +33,14 @@
                         {{ $item->title }}
                     </h3>
 
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                        {{ Str::words(strip_tags($item->description), 30, '...') }} ....selengkapnya
-                    </p>
+                     <p class="text-gray-600 mb-4 text-sm max-h-5vh leading-relaxed line-clamp-4">
+                                {!! strip_tags($item->description) !!}
+
+                            </p>
+                             {{-- <a href="{{ route('produk.detail', [$item->id]) }}"
+                                class="inline-block mt-4 px-4 py-2 text-white text-sm rounded bg-black">
+                                Detail Produk
+                            </a> --}}
                 </div>
 
                 <!-- Popup Sosial Media -->

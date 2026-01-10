@@ -26,32 +26,40 @@
         <div id="tips-carousel" class="flex transition-transform duration-500 ease-in-out">
 
             @forelse ($tips as $tip)
-                <a href="{{ route('tips.detail', [$tip->id]) }}" class="w-full flex-shrink-0 px-2">
+                  <div class="w-full flex-shrink-0 px-2">
 
                     <div
                         class="bg-white rounded-xl shadow-md overflow-hidden
                     transition hover:shadow-lg">
 
-                        <img src="{{ asset('Upload/tips/' . $tip->photo) }}" class="w-full max-h-[30vh] object-cover">
+
+                         <div class="w-full h-[30vh] overflow-auto">
+                         <img src="{{ asset('Upload/tips/' . $tip->photo) }}" 
+                                class="min-w-full min-h-full object-fill" />
+                        </div>
 
                         <div class="p-6">
                             <h3 class="font-semibold text-xl mb-3">
                                 {{ $tip->title }}
                             </h3>
 
-                            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                                    {{ Str::words(strip_tags($tip->description), 30, '...') }}
-                                    selengkapnya
-                                </p>
+                             <p class="text-gray-600 mb-4 text-sm max-h-5vh leading-relaxed line-clamp-4">
+                                {!! strip_tags($tip->description) !!}
+
+                            </p>
 
 
                             <p class="text-sm text-gray-500">
                                 <i class="fa fa-calendar"></i> {{ $tip->tanggal }}
                             </p>
+                              <a href="{{ route('tips.detail', [$tip->id]) }}"
+                                class="inline-block mt-4 px-4 py-2 text-white text-sm rounded bg-black">
+                                Detail Tips
+                            </a>
                         </div>
                     </div>
 
-                </a>
+                  </div>
             @empty
                 <p class="text-center text-gray-500 w-full">
                     Tips belum tersedia
