@@ -45,20 +45,17 @@
                                             {{ $loop->iteration }}
                                         </td>
 
-                                        <td class="px-3 py-2 max-w-[150px]">
-                                            <div class="flex items-center gap-3">
-                                                <img src="{{ asset('Upload/anggota/' . $item->photo) }}"
-                                                    alt="Foto Anggota"
-                                                    class="w-[50px] h-[50px] object-cover rounded-md ring-1 ring-gray-300"
-                                                    loading="lazy"
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/default-avatar.png') }}';">
-                                                <span
-                                                    class="font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[100px]"
-                                                    title="{{ $item->nama_burung }}">
-                                                    {{ $item->nama_burung }}
-                                                </span>
-                                            </div>
-                                        </td>
+                                      <td class="px-3 py-2">
+                                        <div class="flex items-center gap-3">
+                                            <img src="{{ asset('Upload/anggota/' . $item->photo) }}" alt="Foto Anggota"
+                                                class="w-[50px] h-[50px] object-cover rounded-md ring-1 ring-gray-300"
+                                                loading="lazy"
+                                                onerror="this.onerror=null;this.src='{{ asset('images/default-avatar.png') }}';">
+                                            <span class="font-medium whitespace-nowrap">
+                                                {{ $item->nama_burung }}
+                                            </span>
+                                        </div>
+                                    </td>
 
 
                                         <td class="px-3 py-2 font-medium">

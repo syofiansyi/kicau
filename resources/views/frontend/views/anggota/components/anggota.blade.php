@@ -7,19 +7,19 @@
                 <h1 class="text-2xl font-bold">Anggota KLI</h1>
                 <h3 class="text-gray-500 text-sm font-light">Anggota Kopdar Lovebird Indonesia</h3>
             </div>
-
+            
             <!-- Search Form -->
             <form method="GET" action="{{ url()->current() }}" class="w-full md:w-auto">
                 <div class="relative">
-                    <input type="text" name="search" placeholder="Cari di Kopdar Loverbird Indonesia..."
-                        value="{{ request('search') }}"
-                        class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent">
-                    <button type="submit"
-                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <input type="text" 
+                           name="search" 
+                           placeholder="Cari anggota..."
+                           value="{{ request('search') }}"
+                           class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-transparent">
+                    <button type="submit" 
+                            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
@@ -32,8 +32,7 @@
             <div class="col-lg-12">
                 <!-- Info Jumlah Data -->
                 <div class="mb-4 text-sm text-gray-600">
-                    Menampilkan {{ $anggota->firstItem() ?? 0 }} - {{ $anggota->lastItem() ?? 0 }} dari
-                    {{ $anggota->total() }} anggota
+                    Menampilkan {{ $anggota->firstItem() ?? 0 }} - {{ $anggota->lastItem() ?? 0 }} dari {{ $anggota->total() }} anggota
                 </div>
 
                 <div class="scrollable-table overflow-x-auto bg-white rounded-lg shadow">
@@ -45,11 +44,9 @@
                                     <div class="flex items-center justify-between">
                                         <span>Profile ID</span>
                                         <a href="{{ request()->fullUrlWithQuery(['sort' => 'nama_burung', 'direction' => request('direction') == 'asc' ? 'desc' : 'asc']) }}"
-                                            class="text-white hover:text-gray-200">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                                           class="text-white hover:text-gray-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
                                             </svg>
                                         </a>
                                     </div>
@@ -66,20 +63,17 @@
                                         {{ ($anggota->currentPage() - 1) * $anggota->perPage() + $loop->iteration }}
                                     </td>
 
-                                    <td class="px-3 py-2 max-w-[150px]">
+                                    <td class="px-3 py-2">
                                         <div class="flex items-center gap-3">
                                             <img src="{{ asset('Upload/anggota/' . $item->photo) }}" alt="Foto Anggota"
                                                 class="w-[50px] h-[50px] object-cover rounded-md ring-1 ring-gray-300"
                                                 loading="lazy"
                                                 onerror="this.onerror=null;this.src='{{ asset('images/default-avatar.png') }}';">
-                                            <span
-                                                class="font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[100px]"
-                                                title="{{ $item->nama_burung }}">
+                                            <span class="font-medium whitespace-nowrap">
                                                 {{ $item->nama_burung }}
                                             </span>
                                         </div>
                                     </td>
-
 
                                     <td class="px-3 py-2 font-medium">
                                         {{ $item->nama_pemilik }}
@@ -101,10 +95,10 @@
                 </div>
 
                 <!-- Pagination Bootstrap -->
-                @if ($anggota->hasPages())
-                    <div class="d-flex justify-content-center mt-4">
-                        {!! $anggota->withQueryString()->links('pagination::bootstrap-5') !!}
-                    </div>
+                @if($anggota->hasPages())
+                <div class="d-flex justify-content-center mt-4">
+                    {!! $anggota->withQueryString()->links('pagination::bootstrap-5') !!}
+                </div>
                 @endif
             </div>
         </div>
@@ -112,63 +106,63 @@
 </div>
 
 <style>
-    .scrollable-table {
-        overflow-x: auto;
-        border-radius: 8px;
-    }
+.scrollable-table {
+    overflow-x: auto;
+    border-radius: 8px;
+}
 
-    .table {
-        min-width: 800px;
-    }
+.table {
+    min-width: 800px;
+}
 
-    .table thead th {
-        position: sticky;
-        top: 0;
-        background-color: #991b1b;
-        z-index: 10;
-    }
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #991b1b;
+    z-index: 10;
+}
 
-    .table tbody tr:last-child td {
-        border-bottom: none;
-    }
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
 
-    /* Pagination Styles */
-    .pagination {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px;
-        margin: 20px 0;
-    }
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin: 20px 0;
+}
 
-    .page-item .page-link {
-        min-width: 40px;
-        text-align: center;
-        transition: all 0.2s;
-    }
+.page-item .page-link {
+    min-width: 40px;
+    text-align: center;
+    transition: all 0.2s;
+}
 
-    .page-item.active .page-link {
-        box-shadow: 0 2px 4px rgba(153, 27, 27, 0.2);
-    }
+.page-item.active .page-link {
+    box-shadow: 0 2px 4px rgba(153, 27, 27, 0.2);
+}
 
-    /* Search Input */
+/* Search Input */
+input[name="search"] {
+    transition: all 0.3s;
+}
+
+input[name="search"]:focus {
+    box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .flex-col.md\:flex-row {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+    
     input[name="search"] {
-        transition: all 0.3s;
+        width: 100% !important;
     }
-
-    input[name="search"]:focus {
-        box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.1);
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-        .flex-col.md\:flex-row {
-            flex-direction: column;
-            align-items: stretch !important;
-        }
-
-        input[name="search"] {
-            width: 100% !important;
-        }
-    }
+}
 </style>
