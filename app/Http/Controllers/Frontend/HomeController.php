@@ -82,6 +82,7 @@ class HomeController extends Controller
 
             $klasement = Klasement::where('status', 0)->orderBy('posisi', 'desc')->get();
             $anggota = Anggota::latest('id')->limit(10)->get();
+            
             $pertandingan = Hasil_pertandingan::where('status', 0)->latest()->get();
             $juara = Juara::where('status', 0)->when($isSearching, function ($query) use ($search) {
                 $query->where(function ($q) use ($search) {
