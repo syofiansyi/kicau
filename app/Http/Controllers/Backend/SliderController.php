@@ -26,7 +26,7 @@ class SliderController extends Controller
 
             Slider::insert([
                 'title' => $request->title,
-                'description' => $request->description,
+                'kategori' => $request->kategori,
                 'photo' => $save_url,
                 'created_at' => Carbon::now(),
             ]);
@@ -71,6 +71,7 @@ class SliderController extends Controller
             Slider::findOrFail($slider_id)->update([
                 'title' => $request->title,
                 'description' => $request->description,
+                'kategori' => $request->kategori,
                 'photo' => $save_url,
                 'created_at'=> Carbon::now(),
             ]);

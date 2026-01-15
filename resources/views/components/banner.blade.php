@@ -11,21 +11,24 @@
 
                 <a href="https://vt.tiktok.com/ZS51kyvyj/?page=Mall" target="_blank">
                     <img src="{{ asset('Upload/slider/tiktok.png') }}"
-                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform"
-                        alt="TikTok">
+                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform" alt="TikTok">
                 </a>
 
                 <a href="https://s.shopee.co.id/7fT5gAwZM6" target="_blank">
                     <img src="{{ asset('Upload/slider/shopee.jpg') }}"
-                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform"
-                        alt="Shopee">
+                        class="w-20 h-20 rounded-lg shadow-lg hover:scale-105 transition-transform" alt="Shopee">
                 </a>
             </div>
 
             <!-- BANNER -->
-            <div id="banner" class="w-full h-full rounded-lg overflow-hidden shadow-lg cursor-pointer">
-                <img src="{{ asset('Upload/slider/banner.jpg') }}" class="w-full h-full object-cover" loading="lazy">
-            </div>
+            @foreach ($globalSliders as $slider)
+                <div id="banner" class="w-full h-full overflow-hidden shadow-lg cursor-pointer">
+                    <img src="{{ asset('Upload/slider/' . $slider->photo) }}" class="w-full h-full object-cover"
+                        loading="lazy">
+                </div>
+            @endforeach
+
+
 
         </div>
     </div>
