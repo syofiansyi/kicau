@@ -115,8 +115,8 @@
 
                             <select class="form-control" id="kategori" name="kategori" required>
                                 <option value="">-- Pilih Kategori --</option>
-                                <option value="slider">Slider</option>
-                                <option value="banner">Banner</option>
+                                <option value="slider">Slider Landing Page </option>
+                                <option value="banner">Banner Iklan</option>
                             </select>
                         </div>
                     </div>
