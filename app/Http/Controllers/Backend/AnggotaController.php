@@ -15,7 +15,7 @@ class AnggotaController extends Controller
 {
     public function index(Request $request)
     {
-       $anggota = Anggota::latest()->get();
+        $anggota = Anggota::orderBy('id', 'asc')->get();
         return view('backend.views.anggota.index',compact('anggota'));
     }
 
