@@ -18,7 +18,7 @@ class AnggotaController extends Controller
                     ->orWhere('nama_burung', 'ILIKE', "%{$search}%");
             });
         })
-           ->orderBy('id', 'asc') // ganti desc kalau mau terbaru dulu
+           ->orderBy('id', 'desc') // ganti desc kalau mau terbaru dulu
             ->paginate(10);
 
 
