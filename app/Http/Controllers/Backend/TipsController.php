@@ -37,7 +37,7 @@ class TipsController extends Controller
 
         if ($request->hasFile('photo')) {
             $photoName = time() . '.' . $request->photo->extension();
-            $request->photo->move(public_path('upload/tips'), $photoName);
+            $request->photo->move(public_path('Upload/tips'), $photoName);
         }
 
         Tip::create([

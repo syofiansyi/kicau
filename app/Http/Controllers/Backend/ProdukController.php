@@ -39,7 +39,7 @@ class ProdukController extends Controller
 
         if ($request->hasFile('photo')) {
             $photoName = time() . '.' . $request->photo->extension();
-            $request->photo->move(public_path('upload/produk'), $photoName);
+            $request->photo->move(public_path('Upload/produk'), $photoName);
         }
 
         Produk::create([

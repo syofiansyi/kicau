@@ -37,7 +37,7 @@ class AnggotaController extends Controller
 
         if ($request->hasFile('photo')) {
             $photoName = time() . '.' . $request->photo->extension();
-            $request->photo->move(public_path('upload/anggota'), $photoName);
+            $request->photo->move(public_path('Upload/anggota'), $photoName);
         }
 
         Anggota::create([
