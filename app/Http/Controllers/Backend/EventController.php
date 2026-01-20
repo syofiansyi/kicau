@@ -27,6 +27,7 @@ class EventController extends Controller
             'title'=> ucfirst($request->title),
             'slug'=> strtolower(str_replace(' ', '-', $request->title)),
             'lokasi'=>$request->lokasi,
+            'link'=>$request->link,
             'tanggal'=>$request->tanggal,
             'harga'=>$request->harga,
             'description'=>$request->description,
@@ -63,6 +64,7 @@ class EventController extends Controller
             'tanggal'     => $request->tanggal,
             'harga'       => $request->harga,
             'description' => $request->description,
+            'link'=>$request->link,
             'created_at'  => Carbon::now(),
         ];
 

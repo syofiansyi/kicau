@@ -48,9 +48,9 @@
                                 <i class="fa fa-calendar"></i> {{ $event->tanggal }}
                             </p>
 
-                            <p class="text-red-600 font-bold mb-2">
-                                Rp {{ number_format($event->harga, 0, ',', '.') }}
-                            </p>
+                            <a href="{{ $event->link }}" class="btn btn-primary btn-sm" target="_blank">
+                                <i class="bi bi-download"></i>
+                            </a>
 
                             <h3 class="font-semibold text-lg mb-2">
                                 {{ $event->title }}

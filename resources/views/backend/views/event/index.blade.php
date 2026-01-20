@@ -23,7 +23,7 @@
                     <th>Image</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
-                    <th>Harga</th>
+                    <th>Link</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -38,7 +38,7 @@
                         </td>
                         <td>{{ \Carbon\Carbon::parse($hap->tanggal)->format('d-m-y') }}</td>
                         <td>{{ $hap->lokasi }}</td>
-                        <td>Rp {{number_format($hap->harga, 0, ',', '.')  }}</td>
+                        <td>{{ $hap->link }}</td>
                         <td>
                             @if ($hap->status == 0)
                                 <span class="badge rounded-pill bg-success">Active</span>
@@ -114,8 +114,8 @@
                             <input type="date" class="form-control" id="inputEmail4" placeholder="Event Name" name="tanggal">
                         </div>
                         <div class="form-group col-6">
-                            <label for="inputEmail4">Harga</label>
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="Event Name" name="harga">
+                            <label for="inputEmail4">Link</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="Event Link" name="Link">
                         </div>
                         <div class="form-group mt-4">
                             <label for="inputAddress2">Description</label>

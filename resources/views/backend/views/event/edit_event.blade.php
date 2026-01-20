@@ -53,9 +53,9 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Harga</label>
+                                            <label for="inputEmail4">Link</label>
                                             <input type="text" class="form-control" id="inputEmail4"
-                                                   placeholder="Event Name" name="harga" value="{{ $event->harga }}">
+                                                   placeholder="Event Link" name="link" value="{{ $event->link }}">
                                         </div>
                                         <div class="col-md-12">
                                             <label for="inputEmail4" class="form-label">Photo</label>

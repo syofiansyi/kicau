@@ -22,9 +22,9 @@
                                         <p class="date text-sm text-gray-500 mb-1">
                                             <i class="fa fa-calendar"></i> {{ $event->tanggal }}
                                         </p>
-                                        <p class="fw-bold text-danger mb-2"
-                                            style="font-size: 1.1rem; font-weight: bold">Rp
-                                            {{ number_format($event->harga, 0, ',', '.') }}</p>
+                                        <a href="{{ $event->link }}" class="btn btn-primary btn-sm" target="_blank">
+                                            <i class="bi bi-download"></i>
+                                        </a>
                                         <h3 class="title">{{ $event->title }}</h3>
                                         <div class="d-flex justify-content-start">
                                             <a href="{{ route('getDetailEvent', $event->id) }}"

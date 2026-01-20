@@ -78,9 +78,9 @@
 
                                     </div>
                                     <hr />
-                                    <p><strong>Harga</strong></p>
-                                    <p class="fw-bold">Rp {{ number_format($event->harga, 0, ',', '.') }}</p>
-
+                                    <a href="{{ $event->link }}" class="btn btn-primary btn-sm" target="_blank">
+                                        <i class="bi bi-download"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
