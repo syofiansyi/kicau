@@ -11,7 +11,7 @@
                         'icon' => 'whatsapp',
                         'bg' => '#dcfce7',
                         'hoverBg' => '#bbf7d0',
-                        'link' => 'https://wa.me/6285716424066',
+                        'link' => 'https://wa.me/6282123622290',
                     ],
                     [
                         'icon' => 'tiktok',
