@@ -17,7 +17,7 @@
                         'icon' => 'tiktok',
                         'bg' => '#f3f4f6',
                         'hoverBg' => '#e5e7eb',
-                        'link' => 'https://www.tiktok.com/@kopdarlovebird_indonesia?_r=1&_t=ZS-95KwOWaGkZZ',
+                        'link' => 'https://www.tiktok.com/@kopdarlovebird_indonesia?_r=1&_t=ZS-95L15AqiAtu',
                     ],
                     [
                         'icon' => 'youtube',
